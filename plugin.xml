@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-  id="com.intel.xdk.player"
+  id="intel.xdk.player"
   version="0.0.1">
   <name>Intel XDK Player</name>
   <description>Intel XDK Player Plugin</description>
