@@ -35,7 +35,8 @@ module.exports = {
         var me = module.exports;
 
         if (me.playingPodcast) {
-            var ev = document.createEvent('Events'); ev.initEvent('intel.xdk.player.audio.busy', true, true); document.dispatchEvent(ev);
+            //var ev = document.createEvent('Events'); ev.initEvent('intel.xdk.player.audio.busy', true, true); document.dispatchEvent(ev);
+            me.createAndDispatchEvent("intel.xdk.player.audio.busy");
             return;
         } else if (me.isPlaying()) {
             stopAudio();
@@ -63,14 +64,16 @@ module.exports = {
                 me.playingAudio = true;
                 var temp = me.mediaPlayer.seekable;
 
-                var ev = document.createEvent('Events');
+                /*var ev = document.createEvent('Events');
                 ev.initEvent('intel.xdk.player.audio.start');
-                document.dispatchEvent(ev);
+                document.dispatchEvent(ev);*/
+            	me.createAndDispatchEvent("intel.xdk.player.audio.start");
             }
         } catch (e) {
-            var ev = document.createEvent('Events');
+            /*var ev = document.createEvent('Events');
             ev.initEvent('intel.xdk.player.audio.error',true,true);
-            document.dispatchEvent(ev);
+            document.dispatchEvent(ev);*/
+            me.createAndDispatchEvent("intel.xdk.player.audio.error");
             me.busy = false;
         }
 	},
@@ -101,9 +104,10 @@ module.exports = {
 	            me.mediaPlayer.pause();
 	            me.mediaPlayer = null;
 	            me.playingAudio = false;
-	            var ev = document.createEvent('Events');
+	            /*var ev = document.createEvent('Events');
 	            ev.initEvent('intel.xdk.player.audio.stop',true,true);
-	            document.dispatchEvent(ev);
+	            document.dispatchEvent(ev);*/
+                me.createAndDispatchEvent("intel.xdk.player.audio.stop");
 	        } catch (e) {
 	            //e.printStackTrace();
 	        }
@@ -120,10 +124,11 @@ module.exports = {
 	        me.mediaPlayer.volume = me.audioVolume;
         }
 	    
-	    var ev = document.createEvent('Events');
+	    /*var ev = document.createEvent('Events');
 	    ev.initEvent('intel.xdk.player.audio.volume.set', true, true);
 	    e.success=(mediaPlayer == null) ? "false" : "true";
-	    document.dispatchEvent(ev);
+	    document.dispatchEvent(ev);*/
+        me.createAndDispatchEvent("intel.xdk.player.audio.volume.set");
 	},
 
 	setAudioCurrentTime: function(successCallback, errorCallback, params) {
@@ -142,10 +147,10 @@ module.exports = {
 	    }
 
 	    intel.xdk.player.audioInfo = {currentTime:current, duration:length};
-	    var e = document.createEvent('Events');
+	    /*var e = document.createEvent('Events');
 	    e.initEvent('intel.xdk.player.audio.currenttime.set', true, true);
-	    document.dispatchEvent(e);
-
+	    document.dispatchEvent(e);*/
+        me.createAndDispatchEvent("intel.xdk.player.audio.currenttime.set");
 	},
 
 	startUpdatingAudioTime: function(successCallback, errorCallback, params) {
@@ -182,51 +187,87 @@ module.exports = {
 	},
 
 	playPodcast: function(successCallback, errorCallback, params) {
-	    var e = document.createEvent('Events');
+        var me = module.exports;
+	    /*var e = document.createEvent('Events');
 	    e.initEvent('intel.xdk.player.podcast.error', true, true);
 	    e.success = false;
 	    e.message = 'Podcast not implemented for Windows 8.';
-	    document.dispatchEvent(e);
+	    document.dispatchEvent(e);*/
+        me.createAndDispatchEvent("intel.xdk.player.podcast.error",
+            {
+                success: false,
+                message: "Podcast not implemented for Windows 8"
+            });
 	},
 
 	loadSound: function () {
-	    var e = document.createEvent('Events');
+        var me = module.exports;
+	    /*var e = document.createEvent('Events');
 	    e.initEvent('intel.xdk.player.podcast.error', true, true);
 	    e.success = false;
 	    e.message = 'Podcast not implemented for Windows 8.';
-	    document.dispatchEvent(e);
+	    document.dispatchEvent(e);*/
+        me.createAndDispatchEvent("intel.xdk.player.podcast.error",
+            {
+                success: false,
+                message: "Podcast not implemented for Windows 8"
+            });
 	},
 	
 	unloadSound: function () {
-	    var e = document.createEvent('Events');
+        var me = module.exports;
+	    /*var e = document.createEvent('Events');
 	    e.initEvent('intel.xdk.player.podcast.error', true, true);
 	    e.success = false;
 	    e.message = 'Podcast not implemented for Windows 8.';
-	    document.dispatchEvent(e);
+	    document.dispatchEvent(e);*/
+        me.createAndDispatchEvent("intel.xdk.player.podcast.error",
+            {
+                success: false,
+                message: "Podcast not implemented for Windows 8"
+            });
 	},
 
 	unloadAllSounds: function () {
-	    var e = document.createEvent('Events');
+        var me = module.exports;
+	    /*var e = document.createEvent('Events');
 	    e.initEvent('intel.xdk.player.podcast.error', true, true);
 	    e.success = false;
 	    e.message = 'Podcast not implemented for Windows 8.';
-	    document.dispatchEvent(e);
+	    document.dispatchEvent(e);*/
+        me.createAndDispatchEvent("intel.xdk.player.podcast.error",
+            {
+                success: false,
+                message: "Podcast not implemented for Windows 8"
+            });
 	},
 
 	volume: function () {
-	    var e = document.createEvent('Events');
+        var me = module.exports;
+	    /*var e = document.createEvent('Events');
 	    e.initEvent('intel.xdk.player.podcast.error', true, true);
 	    e.success = false;
 	    e.message = 'Podcast not implemented for Windows 8.';
-	    document.dispatchEvent(e);
+	    document.dispatchEvent(e);*/
+        me.createAndDispatchEvent("intel.xdk.player.podcast.error",
+            {
+                success: false,
+                message: "Podcast not implemented for Windows 8"
+            });
 	},
 
 	startShoutcast: function () {
-	    var e = document.createEvent('Events');
+        var me = module.exports;
+	    /*var e = document.createEvent('Events');
 	    e.initEvent('intel.xdk.player.podcast.error', true, true);
 	    e.success = false;
 	    e.message = 'Podcast not implemented for Windows 8.';
-	    document.dispatchEvent(e);
+	    document.dispatchEvent(e);*/
+        me.createAndDispatchEvent("intel.xdk.player.podcast.error",
+            {
+                success: false,
+                message: "Podcast not implemented for Windows 8"
+            });
 	},
 
 	playSound: function (successCallback, errorCallback, params) {
@@ -258,6 +299,17 @@ module.exports = {
 
     isPlaying: function() {
         return module.exports.playingAudio;
+    },
+
+    createAndDispatchEvent: function (name, properties) {
+        var e = document.createEvent('Events');
+        e.initEvent(name, true, true);
+        if (typeof properties === 'object') {
+            for (key in properties) {
+                e[key] = properties[key];
+            }
+        }
+        document.dispatchEvent(e);
     }
 }
 
