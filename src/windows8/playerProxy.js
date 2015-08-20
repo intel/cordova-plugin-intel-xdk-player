@@ -1,3 +1,4 @@
+
 /*
 Copyright 2015 Intel Corporation
 
@@ -39,7 +40,7 @@ module.exports = {
             me.createAndDispatchEvent("intel.xdk.player.audio.busy");
             return;
         } else if (me.isPlaying()) {
-            stopAudio();
+            me.stopAudio();
         }
 
         //URL.createObjectURL
